@@ -1,20 +1,23 @@
-import com.han.user.dao.UserDao;
+import com.han.reflect.Reflect;
 import com.han.user.domain.User;
 
-import java.sql.SQLException;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 
 public class Main {
 
-    public static void main(String[] args) throws SQLException, ClassNotFoundException {
-        UserDao dao = new UserDao();
+    public static void main(String[] args) throws IllegalAccessException, InstantiationException,
+            ClassNotFoundException, InvocationTargetException {
 
-        User user = new User();
-        user.setId("joono01");
-        user.setName("한준호");
-        user.setPassword("1234");
+        Reflect<User> reflect = new Reflect<User>();
 
-        dao.add(user);
+        User user = reflect.invoke("id", "joono43");
+        System.out.println(user.getId());
 
-        System.out.println(user.getId() + " 등록성공!!");
+        user = reflect.invoke("name", "한준호");
+        System.out.println(user.getName());
+
+        user = reflect.invoke("password", "1234");
+        System.out.println(user.getPassword());
     }
 }
