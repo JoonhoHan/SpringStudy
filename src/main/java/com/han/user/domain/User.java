@@ -2,9 +2,9 @@ package com.han.user.domain;
 
 public class User {
 
-    String id;
-    String name;
-    String password;
+    private String id;
+    private String name;
+    private String password;
 
     public String getId() {
         return id;
